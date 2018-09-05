@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="static/stylesheets/style.css">
+	<title>Ti Jiang Web</title>
+</head>
+<body>
+	<div id="container">
+		<nav>
+			<ul id="navbar">
+				<li><a href="#about">About</a></li>
+				<li><a href="#projects">Work</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div id="about" class="intro">
+			<h1>Hi, I am Ti Jiang</h1>
+			<p>A newbee CS student and developer</p>
+		</div>
+
+		<div id="projects" class="work">
+			<h2 class="work-header">These are the projects I am working on</h2>
+			<a href="{% url 'learning_logs:index' %}" class="project project-title" target="_blank">
+				<img src="/static/img/learning_log.png" alt="learning_log" class="project-pic" scaleToFill/>
+				<div class="project-title">Learning Log</div>
+			</a>
+		</div>
+
+		<div id="contact">
+			
+		</div>
+
+		<footer></footer>
+	</div>
+</body>
+</html>
