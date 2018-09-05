@@ -64,7 +64,7 @@ def register(request):
 		# Process completed form.
 		form = SignupForm(data=request.POST)
 		if form.is_valid():
-			new_user.save()
+			new_user = form.save()
 			# Log the user in and the redirect to home page
 			authenticated_user = authenticate(username=new_user.username,
 				password=request.POST['password1'])
