@@ -1,21 +1,41 @@
-{% extends 'learning_logs/base.html' %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatiable" content="IE=edge">
+		<meta name="viewpoint" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block header %}
-  <h2>Log into your account.</h2>
-{% endblock header %}
+		<title>Learning Log</title>
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+		<link rel="stylesheet" href="{% static '/users/signin.css' %}">
+	</head>
+	<body class="text-center">
+	
+		<form action="{% url 'users:login' %}" method="POST" class="form-signin">
+	  	  {% csrf_token %}
+      	  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      	  {{ form.non_field_errors }}
 
-{% block content %}
-<!--  {% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
--->
-  <form action="{% url 'users:login' %}" method="POST" class="form">
-  	{% csrf_token %}
-  	{% bootstrap_form form %}
-  	{% buttons %}
-  	 <button name="submit" class="btn btn-primary">log in</button>
-  	{% endbuttons %}
-  	<input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
-  </form>
-{% endblock content %}
+ 		  {{ form.username.errors }}
+ 		  <label for="{{ form.username.id_for_username }}" class="sr-only">{{ form.username.label }}</label>
+ 		  {% render_field form.username class="form-control" placeholder="Username" required="required" autofocus="autofocus" %}
+
+ 		  {{ form.password.errors }}
+ 		  <label for="{{ form.password.id_for_password }}" class="sr-only">{{ form.password.label }}</label>
+ 		  {% render_field form.password class="form-control" placeholder="Password" required="required" %}
+
+      	  {% buttons %}
+      	  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      	  {% endbuttons %}
+      	  <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
+
+      	  <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        </form>
+	
+	</body>
+</html>
+
